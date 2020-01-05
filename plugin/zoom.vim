@@ -28,6 +28,10 @@ if get(g:, 'zoom#enable_default_keymap', 1) == 1
   nmap <silent> <C-kPlus>  <Plug>(zoom-in)
   nmap <silent> <C-kMinus> <Plug>(zoom-out)
   nmap <silent> <C-k0>     <Plug>(zoom-reset)
+
+  " mouse
+  nmap <silent> <C-ScrollWheelUp>   <Plug>(zoom-in)
+  nmap <silent> <C-ScrollWheelDown> <Plug>(zoom-out)
 endif
 
 let &cpoptions = s:cpoptions
