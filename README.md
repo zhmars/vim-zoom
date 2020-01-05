@@ -6,6 +6,6 @@
 
 ## Supports GUI
 
-- gVim(keypad only)
+- gVim (NOTE: <kbd>Ctrl</kbd><kbd>+</kbd> and <kbd>Ctrl</kbd><kbd>-</kbd> may not work, see [here](https://stackoverflow.com/questions/28334943/whats-the-plus-and-minus-key-symbol-in-vim))
 - [equalsraf/neovim-qt](https://github.com/equalsraf/neovim-qt)
-- [akiyosi/goneovim](https://github.com/akiyosi/goneovim)(use `guifont` config)
+- [akiyosi/goneovim](https://github.com/akiyosi/goneovim) (use `guifont` config)

@@ -9,11 +9,13 @@ Origin   : https://github.com/vim-scripts/zoom.vim
 Mappings:
 <C-+>
 <C-kPlus>
+<C-ScrollWheelUp>
 <Plug>(zoom-in)
   Increase font size
 
 <C-->
 <C-kMinus>
+<C-ScrollWheelDown>
 <Plug>(zoom-out)
   Decrease font size
 
