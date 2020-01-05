@@ -1,82 +1,34 @@
-if &cp || exists("g:loaded_zoom")
-    finish
+if exists('g:loaded_zoom')
+  finish
 endif
+
 let g:loaded_zoom = 1
 
-let s:save_cpo = &cpo
-set cpo&vim
+if !has('gui_running') && !has('nvim')
+  finish
+endif
 
-" keep default value
-let s:current_font = &guifont
+let s:cpoptions = &cpoptions
+set cpoptions&vim
 
-" command
-command! -narg=0 ZoomIn    :call s:ZoomIn()
-command! -narg=0 ZoomOut   :call s:ZoomOut()
-command! -narg=0 ZoomReset :call s:ZoomReset()
+command! ZoomIn    :call zoom#in()
+command! ZoomOut   :call zoom#out()
+command! ZoomReset :call zoom#reset()
 
-" map
-nmap + :ZoomIn<CR>
-nmap - :ZoomOut<CR>
+nnoremap <silent> <Plug>(zoom-in)    :<C-u>call zoom#in()<CR>
+nnoremap <silent> <Plug>(zoom-out)   :<C-u>call zoom#out()<CR>
+nnoremap <silent> <Plug>(zoom-reset) :<C-u>call zoom#reset()<CR>
 
-" guifont size + 1
-function! s:ZoomIn()
-  let l:fsize = substitute(&guifont, '^.*:h\([^:]*\).*$', '\1', '')
-  let l:fsize += 1
-  let l:guifont = substitute(&guifont, ':h\([^:]*\)', ':h' . l:fsize, '')
-  let &guifont = l:guifont
-endfunction
+if get(g:, 'zoom#enable_default_keymap', 1) == 1
+  nmap <silent> <C-+>      <Plug>(zoom-in)
+  nmap <silent> <C-->      <Plug>(zoom-out)
+  nmap <silent> <C-0>      <Plug>(zoom-reset)
 
-" guifont size - 1
-function! s:ZoomOut()
-  let l:fsize = substitute(&guifont, '^.*:h\([^:]*\).*$', '\1', '')
-  let l:fsize -= 1
-  let l:guifont = substitute(&guifont, ':h\([^:]*\)', ':h' . l:fsize, '')
-  let &guifont = l:guifont
-endfunction
+  " keypad
+  nmap <silent> <C-kPlus>  <Plug>(zoom-in)
+  nmap <silent> <C-kMinus> <Plug>(zoom-out)
+  nmap <silent> <C-k0>     <Plug>(zoom-reset)
+endif
 
-" reset guifont size
-function! s:ZoomReset()
-  let &guifont = s:current_font
-endfunction
-
-let &cpo = s:save_cpo
-finish
-
-==============================================================================
-zoom.vim : control gui font size with "+" or "-" keys.
-------------------------------------------------------------------------------
-$VIMRUNTIMEPATH/plugin/zoom.vim
-==============================================================================
-author  : OMI TAKU
-url     : http://nanasi.jp/
-email   : mail@nanasi.jp
-version : 2008/07/18 10:00:00
-==============================================================================
-
-Control Vim editor font size with key "+", or key "-".
-Press "+" key, Vim editor gui font size will change bigger.
-And, press "-" key, Vim editor gui font size will change smaller.
-
-This plugin is for GUI only.
-
-
-Normal Mode:
-    +                  ... change font size bigger
-    -                  ... change font size smaller
-
-Command-line Mode:
-    :ZoomIn            ... change font size bigger
-    :ZoomOut           ... change font size smaller
-    :ZoomReset         ... reset font size changes.
-
-==============================================================================
-
-1. Copy the zoom.vim script to
-   $HOME/vimfiles/plugin or $HOME/.vim/plugin directory.
-   Refer to ':help add-plugin', ':help add-global-plugin' and
-   ':help runtimepath' for more details about Vim plugins.
-
-2. Restart Vim.
-
-==============================================================================
-" vim: set ff=unix et ft=vim nowrap :
+let &cpoptions = s:cpoptions
+unlet s:cpoptions

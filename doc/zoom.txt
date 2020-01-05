@@ -1,0 +1,45 @@
+zoom.txt Increase or decrease font size like Chromium/Firefox.
+
+Based On : OMI TAKU's zoom.vim
+Origin   : https://github.com/vim-scripts/zoom.vim
+           https://www.vim.org/scripts/script.php?script_id=2321
+
+===============================================================================
+                                                                *zoom-mappings*
+Mappings:
+<C-+>
+<C-kPlus>
+<Plug>(zoom-in)
+  Increase font size
+
+<C-->
+<C-kMinus>
+<Plug>(zoom-out)
+  Decrease font size
+
+<C-0>
+<C-k0>
+<Plug>(zoom-reset)
+  Reset font size
+
+===============================================================================
+                                                                *zoom-commands*
+Commands:
+:ZoomIn
+  Increase font size
+
+:ZoomOut
+  Decrease font size
+
+:ZoomReset
+  Reset font size
+
+===============================================================================
+                                                                *zoom-settings*
+g:zoom#enable_default_keymap                     *g:zoom#enable_default_keymap*
+  Type: |Number|
+  Default: `1`
+
+  Enables default key mappings
+
+vim:tw=78:ts=2:sts=2:sw=2:ft=help:norl:

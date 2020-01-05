@@ -1,0 +1,39 @@
+Execute (zoom#font_size() for win32):
+  AssertEqual '10', zoom#font_size('vim-win32', 'Consolas:h10')
+  AssertEqual '10', zoom#font_size('vim-win32', 'Consolas:h10:cANSI')
+  AssertEqual '10', zoom#font_size('vim-win32', 'NSimSun:h10')
+
+Execute (zoom#font_size() for mac):
+  AssertEqual '10', zoom#font_size('vim-mac', 'Menlo:h10')
+
+Execute (zoom#font_size() for linux):
+  AssertEqual '10', zoom#font_size('vim-gtk', 'Noto Sans Mono 10')
+  AssertEqual '10', zoom#font_size('vim-gtk', 'Noto Sans CJK SC 10')
+
+Execute (zoom#font_size() for linux(nvim-qt)):
+  AssertEqual '10', zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h10')
+  AssertEqual '10', zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h10:b')
+
+Execute (zoom#font_size() for linux(goneovim)):
+  AssertEqual '10', zoom#font_size('nvim-goneovim', 'DejaVu Sans Mono:h10')
+
+
+Execute (zoom#font_config() for win32):
+  AssertEqual 'Consolas:h11', zoom#font_config('vim-win32', 'Consolas:h10', 11)
+  AssertEqual 'Consolas:h11:cANSI', zoom#font_config('vim-win32', 'Consolas:h10:cANSI', 11)
+  AssertEqual 'NSimSun:h11', zoom#font_config('vim-win32', 'NSimSun:h10', 11)
+
+Execute (zoom#font_config() for mac):
+  AssertEqual 'Menlo:h11', zoom#font_config('vim-mac', 'Menlo:h10', 11)
+
+Execute (zoom#font_config() for linux):
+  AssertEqual 'Noto Sans Mono 11', zoom#font_config('vim-gtk', 'Noto Sans Mono 10', 11)
+  AssertEqual 'Noto Sans Mono SC 11', zoom#font_config('vim-gtk', 'Noto Sans Mono SC 10', 11)
+
+Execute (zoom#font_config() for linux(nvim-qt)):
+  AssertEqual 'Noto Sans Mono:h11', zoom#font_config('nvim-qt', 'Noto Sans Mono:h10', 11)
+  AssertEqual 'Noto Sans Mono:h11:b', zoom#font_config('nvim-qt', 'Noto Sans Mono:h10:b', 11)
+
+Execute (zoom#font_config() for linux(goneovim)):
+  AssertEqual 'Noto Sans Mono:h11', zoom#font_config('nvim-goneovim', 'Noto Sans Mono:h10', 11)
+

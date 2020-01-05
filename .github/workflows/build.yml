@@ -1,0 +1,29 @@
+---
+name: build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install packages
+      run: |
+        sudo apt update
+        sudo apt install vim
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Run vint
+      uses: reviewdog/action-vint@master
+      with:
+        github_token: ${{ secrets.github_token }}
+        reporter: github-pr-review
+    - name: Run vader
+      run: |
+        git clone https://github.com/junegunn/vader.vim.git
+        vim -Nu <(cat << VIMRC
+        filetype off
+        set rtp+=vader.vim
+        set rtp+=.
+        set rtp+=after
+        filetype plugin indent on
+        syntax enable
+        VIMRC) -c 'Vader! test/*' > /dev/null
