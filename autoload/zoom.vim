@@ -19,19 +19,32 @@ elseif exists('g:gonvim_running')
   let s:guifont = &guifont
 endif
 
+function! zoom#str2num(str) abort
+  if stridx(a:str, '.') > -1
+    return str2float(a:str)
+  else
+    return str2nr(a:str)
+  endif
+endfunction
+
 function! zoom#font_size(gui_name, font_config) abort
   if a:gui_name =~# 'vim-win32\|vim-mac\|nvim-qt\|nvim-goneovim'
-    return substitute(a:font_config, '\v^.*:h([^:]*).*$', '\1', '')
+    return zoom#str2num(substitute(a:font_config, '\v^.*:h([^:]*).*$', '\1', ''))
   elseif a:gui_name ==# 'vim-gtk'
-    return substitute(a:font_config, '\v^.* (\d+)$', '\1', '')
+    return zoom#str2num(substitute(a:font_config, '\v^.* (\d+.?\d+)$', '\1', ''))
   endif
 endfunction
 
 function! zoom#font_config(gui_name, font_config, font_size) abort
+  if type(a:font_size) == v:t_float
+    let font_size = printf('%.1f', a:font_size)
+  else
+    let font_size = printf('%d', a:font_size)
+  endif
   if a:gui_name =~# 'vim-win32\|vim-mac\|nvim-qt\|nvim-goneovim'
-    return substitute(a:font_config, '\v:h([^:]*)', ':h' . a:font_size, '')
+    return substitute(a:font_config, '\v:h([^:]*)', ':h' . font_size, '')
   elseif a:gui_name ==# 'vim-gtk'
-    return substitute(a:font_config, '\v(\d+)', a:font_size, '')
+    return substitute(a:font_config, '\v(\d+.?\d+)', font_size, '')
   endif
 endfunction
 

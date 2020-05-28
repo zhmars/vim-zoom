@@ -1,22 +1,29 @@
 Execute (zoom#font_size() for win32):
-  AssertEqual '10', zoom#font_size('vim-win32', 'Consolas:h10')
-  AssertEqual '10', zoom#font_size('vim-win32', 'Consolas:h10:cANSI')
-  AssertEqual '10', zoom#font_size('vim-win32', 'NSimSun:h10')
+  AssertEqual 10, zoom#font_size('vim-win32', 'Consolas:h10')
+  AssertEqual 10, zoom#font_size('vim-win32', 'Consolas:h10:cANSI')
+  AssertEqual 10, zoom#font_size('vim-win32', 'NSimSun:h10')
 
 Execute (zoom#font_size() for mac):
-  AssertEqual '10', zoom#font_size('vim-mac', 'Menlo:h10')
+  AssertEqual 10, zoom#font_size('vim-mac', 'Menlo:h10')
 
 Execute (zoom#font_size() for linux):
-  AssertEqual '10', zoom#font_size('vim-gtk', 'Noto Sans Mono 10')
-  AssertEqual '10', zoom#font_size('vim-gtk', 'Noto Sans CJK SC 10')
+  AssertEqual 10, zoom#font_size('vim-gtk', 'Noto Sans Mono 10')
+  AssertEqual 10, zoom#font_size('vim-gtk', 'Noto Sans CJK SC 10')
+  AssertEqual 9.5, zoom#font_size('vim-gtk', 'Noto Sans Mono 9.5')
+  AssertEqual 9.5, zoom#font_size('vim-gtk', 'Noto Sans CJK SC 9.5')
+  AssertEqual 19.5, zoom#font_size('vim-gtk', 'Noto Sans Mono 19.5')
+  AssertEqual 19.5, zoom#font_size('vim-gtk', 'Noto Sans CJK SC 19.5')
 
 Execute (zoom#font_size() for linux(nvim-qt)):
-  AssertEqual '10', zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h10')
-  AssertEqual '10', zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h10:b')
+  AssertEqual 10, zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h10')
+  AssertEqual 10, zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h10:b')
+  AssertEqual 9.5, zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h9.5')
+  AssertEqual 9.5, zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h9.5:b')
+  AssertEqual 19.5, zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h19.5')
+  AssertEqual 19.5, zoom#font_size('nvim-qt', 'DejaVu Sans Mono:h19.5:b')
 
 Execute (zoom#font_size() for linux(goneovim)):
-  AssertEqual '10', zoom#font_size('nvim-goneovim', 'DejaVu Sans Mono:h10')
-
+  AssertEqual 10, zoom#font_size('nvim-goneovim', 'DejaVu Sans Mono:h10')
 
 Execute (zoom#font_config() for win32):
   AssertEqual 'Consolas:h11', zoom#font_config('vim-win32', 'Consolas:h10', 11)
