@@ -2,7 +2,7 @@
 
 [![build status](https://github.com/zhmars/vim-zoom/workflows/build/badge.svg)](https://github.com/zhmars/vim-zoom/actions?query=workflow%3Abuild)
 
-  zoom is a plugin which help users to increase or decrease font size like Chromium/Firefox.
+  Zoom is a plugin which help users to increase or decrease font size like Chromium/Firefox.
 
 ## Supports GUI
 
