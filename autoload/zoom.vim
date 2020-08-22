@@ -31,7 +31,7 @@ function! zoom#font_size(gui_name, font_config) abort
   if a:gui_name =~# 'vim-win32\|vim-mac\|nvim-qt\|nvim-goneovim'
     return zoom#str2num(substitute(a:font_config, '\v^.*:h([^:]*).*$', '\1', ''))
   elseif a:gui_name ==# 'vim-gtk'
-    return zoom#str2num(substitute(a:font_config, '\v^.* (\d+.?\d+)$', '\1', ''))
+    return zoom#str2num(substitute(a:font_config, '\v^.* (\d*[.]?\d+)$', '\1', ''))
   endif
 endfunction
 
@@ -44,7 +44,7 @@ function! zoom#font_config(gui_name, font_config, font_size) abort
   if a:gui_name =~# 'vim-win32\|vim-mac\|nvim-qt\|nvim-goneovim'
     return substitute(a:font_config, '\v:h([^:]*)', ':h' . font_size, '')
   elseif a:gui_name ==# 'vim-gtk'
-    return substitute(a:font_config, '\v(\d+.?\d+)', font_size, '')
+    return substitute(a:font_config, '\v(\d*[.]?\d+)', font_size, '')
   endif
 endfunction
 
@@ -57,7 +57,7 @@ function! zoom#in(...) abort
     let fontwide_size = zoom#font_size(s:gui_name, &guifontwide)
     let fontwide_size += step
     let guifont = zoom#font_config(s:gui_name, &guifont, font_size)
-    let guifontwide = zoom#font_config(s:gui_name, &guifontwide, font_size)
+    let guifontwide = zoom#font_config(s:gui_name, &guifontwide, fontwide_size)
     let &guifont = guifont
     let &guifontwide = guifontwide
   elseif s:gui_name ==# 'nvim-qt'

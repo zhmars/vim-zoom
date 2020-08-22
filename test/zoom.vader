@@ -9,6 +9,7 @@ Execute (zoom#font_size() for mac):
 Execute (zoom#font_size() for linux):
   AssertEqual 10, zoom#font_size('vim-gtk', 'Noto Sans Mono 10')
   AssertEqual 10, zoom#font_size('vim-gtk', 'Noto Sans CJK SC 10')
+  AssertEqual 10, zoom#font_size('vim-gtk', 'Noto Sans Mono CJK SC 10')
   AssertEqual 9.5, zoom#font_size('vim-gtk', 'Noto Sans Mono 9.5')
   AssertEqual 9.5, zoom#font_size('vim-gtk', 'Noto Sans CJK SC 9.5')
   AssertEqual 19.5, zoom#font_size('vim-gtk', 'Noto Sans Mono 19.5')
